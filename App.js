@@ -2,9 +2,7 @@ import * as React from "react";
 import { View, Text, StatusBar } from "react-native";
 import {COLOR, ThemeContext, getTheme, Toolbar, Button, Card} from "react-native-material-ui";
 import Menu from "./src/Containers/Menu";
-import { NavigationContainer } from '@react-navigation/native';
 import Routes from "./Routes";
-import {createStackNavigator} from "@react-navigation/stack";
 
 
 const uiTheme = {
@@ -19,26 +17,10 @@ const uiTheme = {
   fontFamily: 'Arial'
 };
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
-  );
-}
-
-const Stack = createStackNavigator();
-
-
 const App = () => {
-
   return (
     <ThemeContext.Provider value={getTheme(uiTheme)}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Routes />
       {/*<View>*/}
       {/*  <Toolbar*/}
       {/*    leftElement="menu"*/}

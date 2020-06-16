@@ -1,18 +1,17 @@
 import { createStackNavigator } from '@react-navigation/stack';
-
 import Home from "./src/Containers/Home";
 import {NavigationContainer} from "@react-navigation/native";
-import {ThemeContext} from "react-native-material-ui";
 import React from "react";
 
-
-// const Routes = StackNavigator({
-//   home: { screen: Home },
-// });
+const Stack = createStackNavigator();
 
 const Routes = () => {
   return (
-    <></>
+    <NavigationContainer>
+      <Stack.Navigator headerMode='none'>
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
