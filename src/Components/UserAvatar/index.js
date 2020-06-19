@@ -1,44 +1,38 @@
 import React from 'react';
-import {Image, StyleSheet} from "react-native";
-import {Avatar} from "react-native-material-ui";
-import useSelector from "../../hooks/useSelector";
-import {getUserAvatar} from "../../store/selectors";
+import { Image } from 'react-native';
+import { Avatar } from 'react-native-material-ui';
+import useSelector from '../../hooks/useSelector';
+import { getUserAvatar } from '../../store/selectors';
 
 export const AVATAR_SIZES = {
-  BIG: 'BIG',
-  SMALL: 'SMALL'
+  lg: 'lg',
+  sm: 'sm'
 }
 
 export const DIMENSIONS = {
-  BIG: 150,
-  SMALL: 90
+  lg: 150,
+  sm: 70
 }
 
-const styles = StyleSheet.create({
-  BIG: {
-    resizeMode: 'cover',
-    width: DIMENSIONS.BIG,
-    height: DIMENSIONS.BIG,
-    borderRadius: DIMENSIONS.BIG / 2
-  },
-  SMALL: {
-    resizeMode: 'cover',
-    width: DIMENSIONS.SMALL,
-    height: DIMENSIONS.SMALL,
-    borderRadius: DIMENSIONS.SMALL / 2
-  }
-});
+const getStyles = (size) => {
+  const dimension = DIMENSIONS[size];
 
-const UserAvatar = ({ size }) => {
+  return {
+    resizeMode: 'cover',
+    width: dimension,
+    height: dimension,
+    borderRadius: dimension / 2
+  }
+}
+
+const UserAvatar = ({ sizes = 'sm' }) => {
   const avatar = useSelector(getUserAvatar);
 
   return (
     <Avatar
-      size={DIMENSIONS[size]}
-      iconSize={DIMENSIONS[size] / 2}
-      {...{
-        ...(avatar ? { image: <Image style={styles[size]} source={{ uri: avatar }}/> } : { icon: 'person' })
-      }}
+      size={DIMENSIONS[sizes]}
+      iconSize={DIMENSIONS[sizes] / 2}
+      {...(avatar ? { image: <Image style={getStyles(sizes)} source={{ uri: avatar }}/> } : { icon: 'person' })}
     />
   )
 }

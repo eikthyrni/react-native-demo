@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, ScrollView } from 'react-native';
 import ScreenWrapper from '../../ScreenWrapper';
 import { Button, ListItem, Subheader } from 'react-native-material-ui';
 import useSelector from '../../hooks/useSelector';
@@ -39,42 +39,41 @@ const Profile = () => {
 
   return (
     <ScreenWrapper>
-      <Subheader text='Profile' />
-      <Flex align='center'>
-        <Box style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}>
-          <AvatarForm />
-        </Box>
-        <Box>
-          <ListItem
-            divider
-            leftElement='face'
-            centerElement={
-              <TextInput value={state.name} onChangeText={handleNameChange} />
-            }
-          />
-        </Box>
-        <Box>
-          <ListItem
-            divider
-            leftElement='mail'
-            centerElement={
-              <TextInput value={state.email} onChangeText={handleEmailChange} />
-            }
-          />
-        </Box>
-        <Box>
-          <Button
-            raised
-            primary
-            text='Save'
-            onPress={handleSubmit}
-            disabled={isDisabledSubmit}
-          />
-        </Box>
-      </Flex>
+      <ScrollView>
+        <Subheader text='Profile' />
+        <Flex align='center'>
+          <Box style={{ display: 'flex', alignItems: 'center'}}>
+            <AvatarForm />
+          </Box>
+          <Box style={{ marginTop: 20 }}>
+            <ListItem
+              divider
+              leftElement='face'
+              centerElement={
+                <TextInput value={state.name} onChangeText={handleNameChange} />
+              }
+            />
+          </Box>
+          <Box>
+            <ListItem
+              divider
+              leftElement='mail'
+              centerElement={
+                <TextInput value={state.email} onChangeText={handleEmailChange} />
+              }
+            />
+          </Box>
+          <Box style={{ marginTop: 20 }}>
+            <Button
+              raised
+              primary
+              text='Save'
+              onPress={handleSubmit}
+              disabled={isDisabledSubmit}
+            />
+          </Box>
+        </Flex>
+      </ScrollView>
     </ScreenWrapper>
   )
 }

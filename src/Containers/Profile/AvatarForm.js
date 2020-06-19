@@ -35,7 +35,7 @@ const AvatarForm = () => {
 
   return (
     <View style={{ height: 200 }}>
-      <UserAvatar size={AVATAR_SIZES.BIG} />
+      <UserAvatar sizes={AVATAR_SIZES.lg} />
       <Button text='Upload photo' onPress={handleUpload} />
     </View>
   )

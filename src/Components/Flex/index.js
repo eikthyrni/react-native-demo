@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Box = ({ children, ...props }) => {
+export const Box = ({ children, style }) => {
   return (
-    <View style={{ width: '100%' }} {...props}>{children}</View>
+    <View style={[{ width: '100%' }, style]}>{children}</View>
   )
 }
 

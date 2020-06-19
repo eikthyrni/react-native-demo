@@ -1,15 +1,18 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Drawer } from 'react-native-material-ui';
+import { View, StyleSheet } from 'react-native';
+import {COLOR, Drawer} from 'react-native-material-ui';
 import { Screens } from '../../constants';
 import useSelector from '../../hooks/useSelector';
 import { getUser } from '../../store/selectors';
 import UserAvatar, { AVATAR_SIZES } from '../../Components/UserAvatar';
-import {Flex} from "../../Components/Flex";
 
-const ContainerStyles = {
-  flex: 1,
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLOR.grey500,
+    paddingTop: 35,
+  }
+});
 
 const Menu = ({ navigationRef, navigate }) => {
   const currentRoute = navigationRef.current?.getCurrentRoute();
@@ -31,11 +34,11 @@ const Menu = ({ navigationRef, navigate }) => {
   ]
 
   return (
-    <Flex>
+    <View style={styles.container}>
       <Drawer>
         <Drawer.Header>
           <Drawer.Header.Account
-            avatar={<UserAvatar size={AVATAR_SIZES.SMALL} />}
+            avatar={<UserAvatar />}
             footer={{
               dense: true,
               centerElement: {
@@ -47,7 +50,7 @@ const Menu = ({ navigationRef, navigate }) => {
         </Drawer.Header>
         <Drawer.Section items={items} />
       </Drawer>
-    </Flex>
+    </View>
   )
 }
 
