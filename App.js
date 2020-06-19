@@ -1,9 +1,8 @@
-import * as React from "react";
-import { View, Text, StatusBar } from "react-native";
-import {COLOR, ThemeContext, getTheme, Toolbar, Button, Card} from "react-native-material-ui";
-import Menu from "./src/Containers/Menu";
-import Routes from "./Routes";
-
+import React from 'react';
+import {COLOR, ThemeContext, getTheme} from 'react-native-material-ui';
+import Navigator, {navigationRef} from './Navigator';
+import {NavigationContainer} from '@react-navigation/native';
+import StoreProvider from './src/store/provider';
 
 const uiTheme = {
   palette: {
@@ -11,7 +10,7 @@ const uiTheme = {
   },
   toolbar: {
     container: {
-      height: 150,
+      height: 90,
     },
   },
   fontFamily: 'Arial'
@@ -19,19 +18,13 @@ const uiTheme = {
 
 const App = () => {
   return (
-    <ThemeContext.Provider value={getTheme(uiTheme)}>
-      <Routes />
-      {/*<View>*/}
-      {/*  <Toolbar*/}
-      {/*    leftElement="menu"*/}
-      {/*    // onLeftElementPress={() => Alert.alert('alert')}*/}
-      {/*    centerElement="Title"*/}
-      {/*  />*/}
-      {/*  <Menu />*/}
-      {/*  <Button primary text="Primary" />*/}
-      {/*  <Home />*/}
-      {/*</View>*/}
-    </ThemeContext.Provider>
+    <StoreProvider>
+      <ThemeContext.Provider value={getTheme(uiTheme)}>
+        <NavigationContainer ref={navigationRef}>
+          <Navigator />
+        </NavigationContainer>
+      </ThemeContext.Provider>
+    </StoreProvider>
   );
 }
 
