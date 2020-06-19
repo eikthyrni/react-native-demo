@@ -2,7 +2,7 @@ import React from 'react';
 import ScreenWrapper from '../../ScreenWrapper';
 import Actions from './Actions';
 import useSelector from '../../hooks/useSelector';
-import { getTodoList } from '../../store/todo/selectors';
+import { getTodoList } from '../../store/selectors';
 import { Badge, Subheader } from 'react-native-material-ui';
 import Item from './Item';
 import { ScrollView, StyleSheet, View } from 'react-native';

@@ -1,7 +1,11 @@
-import React from "react";
-import {View} from "react-native";
-import {Avatar, Drawer} from "react-native-material-ui";
+import React from 'react';
+import { View } from 'react-native';
+import { Drawer } from 'react-native-material-ui';
 import { Screens } from '../../constants';
+import useSelector from '../../hooks/useSelector';
+import { getUser } from '../../store/selectors';
+import UserAvatar, { AVATAR_SIZES } from '../../Components/UserAvatar';
+import {Flex} from "../../Components/Flex";
 
 const ContainerStyles = {
   flex: 1,
@@ -9,6 +13,7 @@ const ContainerStyles = {
 
 const Menu = ({ navigationRef, navigate }) => {
   const currentRoute = navigationRef.current?.getCurrentRoute();
+  const user = useSelector(getUser);
 
   const item = (icon, url) => {
     return {
@@ -26,25 +31,23 @@ const Menu = ({ navigationRef, navigate }) => {
   ]
 
   return (
-    <View style={ContainerStyles}>
+    <Flex>
       <Drawer>
         <Drawer.Header>
           <Drawer.Header.Account
-            avatar={<Avatar text="A" />}
+            avatar={<UserAvatar size={AVATAR_SIZES.SMALL} />}
             footer={{
               dense: true,
               centerElement: {
-                primaryText: 'User name',
-                secondaryText: 'mail@email.com',
+                primaryText: user.name,
+                secondaryText: user.email,
               },
             }}
           />
         </Drawer.Header>
-        <Drawer.Section
-          items={items}
-        />
+        <Drawer.Section items={items} />
       </Drawer>
-    </View>
+    </Flex>
   )
 }
 
