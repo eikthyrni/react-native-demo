@@ -5,21 +5,23 @@ import { Store } from '../../store/provider';
 import { uploadAvatarAction } from '../../store/user/actions';
 import UserAvatar, { AVATAR_SIZES } from '../../Components/UserAvatar';
 import { Box } from '../../Components/Flex';
+import * as Permissions from 'expo-permissions';
 
 const AvatarForm = () => {
   const { dispatch } = useContext(Store);
 
   const requestPermissions = async () => {
-    const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
+    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
     const statusSucceed = status === 'granted';
     if (!statusSucceed) {
-      alert(`Can't upload photo without permissions`);
+      alert(status);
     }
     return statusSucceed
   }
 
   const handleUpload = async () => {
-    if (await requestPermissions()) {
+    const cameraRollGranted = await requestPermissions();
+    if (cameraRollGranted) {
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.All,
         allowsEditing: true,
