@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { TextInput, ScrollView } from 'react-native';
-import ScreenWrapper from '../../ScreenWrapper';
+import ScreenWrapper from '../../Components/ScreenWrapper';
 import { Button, ListItem, Subheader } from 'react-native-material-ui';
 import useSelector from '../../hooks/useSelector';
 import { getUser } from '../../store/selectors';
@@ -16,21 +16,17 @@ const Profile = () => {
   const [state, setState] = useState({ name, email });
   const [isDisabledSubmit, setDisableSubmit] = useState(true);
 
-  const handleNameChange = (value) => {
+  const handleUserChange = (field, value) => {
     setState({
       ...state,
-      name: value
+      [field]: value
     })
     setDisableSubmit(false);
   }
 
-  const handleEmailChange = (value) => {
-    setState({
-      ...state,
-      email: value
-    })
-    setDisableSubmit(false);
-  }
+  const handleNameChange = (value) => handleUserChange('name', value);
+
+  const handleEmailChange = (value) => handleUserChange('email', value);
 
   const handleSubmit = () => {
     dispatch(updateUserAction(state));
@@ -41,10 +37,8 @@ const Profile = () => {
     <ScreenWrapper>
       <ScrollView>
         <Subheader text='Profile' />
-        <Flex align='center'>
-          <Box style={{ display: 'flex', alignItems: 'center'}}>
-            <AvatarForm />
-          </Box>
+        <Flex>
+          <AvatarForm />
           <Box style={{ marginTop: 20 }}>
             <ListItem
               divider

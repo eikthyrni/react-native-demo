@@ -13,7 +13,7 @@ export const reducer = (state, action) => {
         ...state,
         avatar: action.payload
       }
-    case ACTIONS.UPDATE:
+    case ACTIONS.UPDATE_USER:
       return {
         ...state,
         name: action.payload.name,

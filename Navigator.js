@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "./src/Containers/Profile";
 import Map from "./src/Containers/Map";
 import {createDrawerNavigator} from "@react-navigation/drawer";
-import Menu from "./src/Containers/Menu";
+import Menu from "./src/Components/Menu";
 import { Screens } from './src/constants';
 import ToDo from "./src/Containers/ToDo";
 

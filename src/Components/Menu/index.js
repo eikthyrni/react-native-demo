@@ -4,7 +4,7 @@ import {COLOR, Drawer} from 'react-native-material-ui';
 import { Screens } from '../../constants';
 import useSelector from '../../hooks/useSelector';
 import { getUser } from '../../store/selectors';
-import UserAvatar, { AVATAR_SIZES } from '../../Components/UserAvatar';
+import UserAvatar from '../UserAvatar';
 
 const styles = StyleSheet.create({
   container: {

@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Meow",
+    "icon": "./icon.png",
+    "version": "0.0.1",
+    "slug": "my-meow-app",
+    "ios": {
+      "bundleIdentifier": "test",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "test.test",
+      "versionCode": 1,
+      "permissions": [
+        "ACCESS_FINE_LOCATION"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDzi8HgKIVj2IWVmBYoDKU3g9o4Uw656ds"
+        }
+      }
+    }
+  }
+}

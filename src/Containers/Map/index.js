@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { StyleSheet, View, PermissionsAndroid } from 'react-native';
-import ScreenWrapper from '../../ScreenWrapper';
+import ScreenWrapper from '../../Components/ScreenWrapper';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import * as Location from 'expo-location';
 import { INITIAL_REGION } from '../../constants';

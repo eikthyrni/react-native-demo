@@ -1,5 +1,5 @@
 import React from 'react';
-import ScreenWrapper from '../../ScreenWrapper';
+import ScreenWrapper from '../../Components/ScreenWrapper';
 import Actions from './Actions';
 import useSelector from '../../hooks/useSelector';
 import { getTodoList } from '../../store/selectors';
