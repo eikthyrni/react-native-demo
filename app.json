@@ -12,7 +12,8 @@
       "package": "test.test",
       "versionCode": 1,
       "permissions": [
-        "ACCESS_FINE_LOCATION"
+        "ACCESS_FINE_LOCATION",
+        "CAMERA_ROLL"
       ],
       "config": {
         "googleMaps": {
